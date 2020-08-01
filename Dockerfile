@@ -1,35 +1,13 @@
-FROM python:slim
+FROM python:3.7
 
-ENV PYENV_ROOT=/root/.pyenv
-ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+LABEL maintainer="github.com/camilamaia"
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-      build-essential \
-      curl \
-      git \
-      libbz2-dev \
-      libffi-dev \
-      liblzma-dev \
-      libncurses5-dev \
-      libncursesw5-dev \
-      libreadline-dev \
-      libsqlite3-dev \
-      libssl-dev \
-      llvm \
-      make \
-      python-openssl \
-      tk-dev \
-      wget \
-      xz-utils \
-      zlib1g-dev \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+ENV PATH="~/.local/bin:${PATH}"
 
-RUN git clone --depth 1 https://github.com/pyenv/pyenv.git $PYENV_ROOT && \
-    rm -rfv $PYENV_ROOT/.git
+RUN pip install pip setuptools --upgrade
 
-RUN git clone https://github.com/momo-lab/xxenv-latest.git $PYENV_ROOT/plugins/xxenv-latest
+RUN pip install scanapi
 
 ENTRYPOINT ["/entrypoint.sh"]
+
 COPY entrypoint.sh /entrypoint.sh
