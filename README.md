@@ -13,14 +13,12 @@ The following will take the yaml file and produce a scanapi-report.html file as 
 
 ```yaml
 - name: Run automated API tests
-  uses: scanapi/scanapi@v1
+  uses: vinigfer/myaction@master
   with:
     arguments: 'scanapi.yaml'
 ```
 
 ## Example workflow
-
-The following will build and publish the pyhon package when project is tagged in the `v*.*.*` form.
 
 ```yaml
 name: Run tests
@@ -34,7 +32,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run automated API tests
-      uses: scanapi/scanapi@v1
+      uses: myaction/scanapi@master
       with:
         arguments: 'scanapi.yml' 
 ```

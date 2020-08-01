@@ -1,5 +1,5 @@
 name: 'Run ScanAPI action'
-author: '@scanapi'
+author: '@vinigfer'
 description: 'Allows any developer to run ScanAPI using github actions'
 branding:
   icon: 'align-justify'
